@@ -573,6 +573,14 @@ type (
 		// 0: 単品配送ではない
 		// 1: 単品配送である
 		IsSingleItemShipping int `json:"isSingleItemShipping"`
+
+		SkuModelList []GetOrderItemModelSkuModelList `json:"SkuModelList"`
+	}
+
+	GetOrderItemModelSkuModelList struct {
+		VariantId            string `json:"variantId"`
+		MerchantDefinedSkuId string `json:"merchantDefinedSkuId"`
+		SkuInfo              string `json:"skuInfo"`
 	}
 
 	// GetOrderDeliveryCvsModel は楽天ペイ受注APIの注文情報の取得で得られる配送のコンビニ・郵便局受け取りに関する情報です。
