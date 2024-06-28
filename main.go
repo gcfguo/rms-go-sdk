@@ -1508,7 +1508,9 @@ func (a *RMSApi) SearchOrder(dateType SearchOrderDateType, startDatetime, endDat
 	req.Header.Set("Authorization", "ESA "+a.authorization)
 	req.Header.Set("Content-Type", "application/json; charset=utf-8")
 
-	client := new(http.Client)
+	client := &http.Client{
+		Timeout: time.Second * 10,
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
