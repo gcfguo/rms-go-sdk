@@ -1510,9 +1510,11 @@ func (a *RMSApi) SearchOrder(dateType SearchOrderDateType, startDatetime, endDat
 
 	client := new(http.Client)
 	resp, err := client.Do(req)
-	defer resp.Body.Close()
 	if err != nil {
 		return nil, err
+	}
+	if resp != nil {
+		defer resp.Body.Close()
 	}
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
